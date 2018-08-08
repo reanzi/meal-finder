@@ -1,0 +1,24 @@
+{
+  "name": "meal-finder",
+  "version": "1.0.0",
+  "description": "A simple friendly system to order Food online",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "food",
+    "meal",
+    "finder",
+    "foodapp",
+    "mealapp"
+  ],
+  "author": "Raymond Michael Nziku",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.16.5"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}
