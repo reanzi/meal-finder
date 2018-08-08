@@ -1,5 +1,6 @@
 // Global app controller
 import Search from "./models/Search";
+import { elements } from "./views/dom";
 import * as fxn from "./function/fns";
 
 /**  Global state of the app */
@@ -9,11 +10,8 @@ import * as fxn from "./function/fns";
 /*- Liked recipes
 */
 
-// DOM variables
-const searchBtn = document.querySelector(".search");
-
 // Event Listerners
-searchBtn.addEventListener("submit", e => {
+elements.searchBtn.addEventListener("submit", e => {
   e.preventDefault();
   fxn.controlSearch();
 });
