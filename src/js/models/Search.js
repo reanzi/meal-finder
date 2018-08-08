@@ -5,7 +5,7 @@ export default class Search {
     this.query = query;
   }
 
-  async getResult() {
+  async getResults() {
     const key = "34205959804fbc9c9d75742a43caf024";
     //   const prox = "https://crossorigin.me/";
     const prox = "https://cors-anywhere.herokuapp.com/"; // handling 'cross-origin'
