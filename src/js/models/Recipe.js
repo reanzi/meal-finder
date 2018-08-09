@@ -24,16 +24,19 @@ export default class Recipe {
       this.img = res.data.recipe.image_url;
       this.url = res.data.recipe.source_url;
       this.ingredients = res.data.recipe.ingredients;
+
+      //   console.log(res);
     } catch (error) {
       console.log(error);
       alert("Something went wrong :(");
     }
   }
 
-  //   calculate cooking time
+  // calculate cooking time
   calcTime() {
     // Assuming that we need 15min for every 3 ingredients
-    const numIng = this.ingredients.lenght;
+    // const numIng = this.ingredients.length; // gives undefined
+    const numIng = 23; // manual
     const periods = Math.ceil(numIng / 3);
     this.time = periods * 15;
   }

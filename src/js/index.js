@@ -2,6 +2,7 @@
 // import Search from "./models/Search";
 import { elements } from "./views/base";
 import * as fxn from "./controllers/searchCtrl";
+import * as recipeCtrl from "./controllers/recipeCtrl";
 // import Recipe from "./models/Recipe";
 // import * as searchView from "./views/searchView";
 
