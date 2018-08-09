@@ -1,11 +1,15 @@
 import Search from "../models/Search";
 import { elements, renderLoader, clearLoader } from "../views/base";
 import * as searchView from "../views/searchView";
+import Recipe from "../models/Recipe";
 
 // state
 const state = {};
 
-// functions
+/**
+ *   ##SEARCH CONTROLLER
+ *
+ */
 export const controlSearch = async () => {
   // 1 | Get query from view
   const query = searchView.getInput(); // TODO
@@ -32,7 +36,15 @@ export const navigate = () => {
       const gotToPage = parseInt(btn.dataset.goto, 10);
       searchView.clearResult();
       searchView.renderResults(state.search.result, gotToPage);
-      console.log(gotToPage);
+      // console.log(gotToPage);
     }
   });
 };
+
+// /**
+//  *   ##RECIPE CONTROLLER
+//  *
+//  */
+const r = new Recipe(46956);
+r.getRecipe();
+console.log(r);

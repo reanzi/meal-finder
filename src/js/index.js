@@ -1,8 +1,9 @@
 // Global app controller
-import Search from "./models/Search";
+// import Search from "./models/Search";
 import { elements } from "./views/base";
-import * as fxn from "./function/fns";
-import * as searchView from "./views/searchView";
+import * as fxn from "./controllers/searchCtrl";
+// import Recipe from "./models/Recipe";
+// import * as searchView from "./views/searchView";
 
 /**  Global state of the app */
 /*- Search Object
@@ -27,3 +28,11 @@ fxn.navigate();
 //     console.log(gotToPage);
 //   }
 // });
+
+/**
+ *   ##RECIPE CONTROLLER
+ *
+ */
+// const r = new Recipe(46956);
+// r.getRecipe();
+// console.log(r);

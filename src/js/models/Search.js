@@ -1,5 +1,5 @@
 import axios from "axios";
-import { elements } from "../views/base";
+import { key, proxy } from "../passkeys";
 
 export default class Search {
   constructor(query) {
@@ -7,15 +7,13 @@ export default class Search {
   }
 
   async getResults() {
-    const key = "34205959804fbc9c9d75742a43caf024";
-    //   const prox = "https://crossorigin.me/";
-    const prox = "https://cors-anywhere.herokuapp.com/"; // handling 'cross-origin'
     try {
       const res = await axios(
-        `${prox}http://food2fork.com/api/search?key=${key}&q=${this.query}`
+        `${proxy}http://food2fork.com/api/search?key=${key}&q=${this.query}`
       );
+      // console.log(res);
       this.result = res.data.recipes;
-      //   console.log(this.result);
+      // console.log(this.result);
     } catch (error) {
       console.log(" Something went wrong " + error);
     }
