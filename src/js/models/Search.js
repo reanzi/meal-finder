@@ -1,5 +1,5 @@
 import axios from "axios";
-import { elements } from "../views/dom";
+import { elements } from "../views/base";
 
 export default class Search {
   constructor(query) {

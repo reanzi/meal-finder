@@ -1,6 +1,6 @@
 // Global app controller
 import Search from "./models/Search";
-import { elements } from "./views/dom";
+import { elements } from "./views/base";
 import * as fxn from "./function/fns";
 
 /**  Global state of the app */

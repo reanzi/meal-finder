@@ -1,4 +1,4 @@
-import { elements } from "./dom";
+import { elements } from "./base";
 // import * as fxn from "../function/fns";
 
 export const getInput = () => elements.searchInput.value;
