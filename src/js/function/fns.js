@@ -25,3 +25,14 @@ export const controlSearch = async () => {
     searchView.renderResults(state.search.result);
   }
 };
+export const navigate = () => {
+  elements.searchResPages.addEventListener("click", e => {
+    const btn = e.target.closest(".btn-inline");
+    if (btn) {
+      const gotToPage = parseInt(btn.dataset.goto, 10);
+      searchView.clearResult();
+      searchView.renderResults(state.search.result, gotToPage);
+      console.log(gotToPage);
+    }
+  });
+};

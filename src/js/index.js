@@ -2,6 +2,7 @@
 import Search from "./models/Search";
 import { elements } from "./views/base";
 import * as fxn from "./function/fns";
+import * as searchView from "./views/searchView";
 
 /**  Global state of the app */
 /*- Search Object
@@ -16,6 +17,13 @@ elements.searchBtn.addEventListener("submit", e => {
   fxn.controlSearch();
 });
 
-// const search = new Search("pizza");
-// console.log(search);
-// search.getResult();
+fxn.navigate();
+
+// elements.searchResPages.addEventListener("click", e => {
+//   const btn = e.target.closest(".btn-inline");
+//   if (btn) {
+//     const gotToPage = parseInt(btn.dataset.goto, 10);
+//     searchView.renderResults(state.search.result, gotToPage);
+//     console.log(gotToPage);
+//   }
+// });

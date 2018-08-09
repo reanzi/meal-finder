@@ -1,5 +1,5 @@
 const path = require("path");
-const htmlPlugin = require("../../../../../Library/Caches/typescript/2.9/node_modules/@types/html-webpack-plugin");
+const htmlPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: ["babel-polyfill", "./src/js/index.js"],
