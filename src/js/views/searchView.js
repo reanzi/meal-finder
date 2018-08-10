@@ -10,6 +10,19 @@ export const clearResult = () => {
   elements.searchResList.innerHTML = "";
   elements.searchResPages.innerHTML = "";
 };
+
+export const highlightSelected = id => {
+  //1st remove active class from all
+  const resultArray = Array.from(document.querySelectorAll(".results__link"));
+  resultArray.forEach(el => {
+    el.classList.remove("results__link--active");
+  });
+
+  //Add active class to selected item
+  document
+    .querySelector(`a[href*="#${id}"]`)
+    .classList.add("results__link--active");
+};
 // limiting the length of title
 /* example; 'pasta with tomato and spinach' => splitted by space gives 5 words
 initial = 0;
@@ -39,9 +52,7 @@ const limitRecipeTitle = (title, limit = 17) => {
 const renderRecipe = recipe => {
   const markup = `
         <li>
-            <a class="results__link results__link--active" href="#${
-              recipe.recipe_id
-            }">
+            <a class="results__link" href="#${recipe.recipe_id}">
                 <figure class="results__fig">
                     <img src="${recipe.image_url}" alt="Test">
                 </figure>

@@ -76,8 +76,6 @@ export default class Recipe {
     ];
     const units = [...unitsShort, "kg", "g"];
 
-    console.log(this.ingredients); // gives undefined too
-
     const newIngredients = this.ingredients.map(el => {
       // 1 | Uniform units
       let ingredient = el.toLowerCase();
