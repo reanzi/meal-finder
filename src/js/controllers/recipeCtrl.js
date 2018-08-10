@@ -1,44 +1,48 @@
-import Recipe from "../models/Recipe";
-import { state } from "./searchCtrl";
+// import Recipe from "../models/Recipe";
+// import { state } from "./searchCtrl";
 
-// /**
-//  *   ##RECIPE CONTROLLER
-//  *
-//  */
+// // /**
+// //  *   ##RECIPE CONTROLLER
+// //  *
+// //  */
 
-const controlRecipe = async () => {
-  //Get ID from the url
-  const id = window.location.hash.replace("#", "");
+// const controlRecipe = async () => {
+//   //Get ID from the url
+//   const id = window.location.hash.replace("#", "");
 
-  console.log(id);
+//   console.log(id);
 
-  if (id) {
-    // Prepare UI for change
+//   if (id) {
+//     // Prepare UI for change
 
-    // create new recipe Object
-    state.recipe = new Recipe(id);
+//     // create new recipe Object
+//     state.recipe = new Recipe(id);
 
-    try {
-      //Get recipe data
-      state.recipe.getRecipe();
+//     //TESTING
+//     // window.r = state.recipe;
 
-      //Calc serving and time
+//     try {
+//       //Get recipe data & parse ingredients
+//       state.recipe.getRecipe();
+//       state.recipe.parseIngredients();
 
-      state.recipe.calcTime();
-      state.recipe.calcServings();
+//       //Calc serving and time
 
-      //render recipe
-      console.log(state.recipe);
-    } catch (error) {
-      console.log(error);
-      alert("Error Processing the Recipe");
-    }
-  }
-};
+//       state.recipe.calcTime();
+//       state.recipe.calcServings();
 
-// window.addEventListener("hashchange", controlRecipe);
-// window.addEventListener('load', controlRecipe);
+//       //render recipe
+//       console.log(state.recipe);
+//     } catch (error) {
+//       console.log(error);
+//       alert("Error Processing the Recipe");
+//     }
+//   }
+// };
 
-["hashchange", "load"].forEach(event =>
-  window.addEventListener(event, controlRecipe)
-);
+// // window.addEventListener("hashchange", controlRecipe);
+// // window.addEventListener('load', controlRecipe);
+
+// ["hashchange", "load"].forEach(event =>
+//   window.addEventListener(event, controlRecipe)
+// );

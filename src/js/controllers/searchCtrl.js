@@ -1,7 +1,6 @@
 import Search from "../models/Search";
 import { elements, renderLoader, clearLoader } from "../views/base";
 import * as searchView from "../views/searchView";
-import Recipe from "../models/Recipe";
 
 // state
 export const state = {};
@@ -13,6 +12,7 @@ export const state = {};
 export const controlSearch = async () => {
   // 1 | Get query from view
   const query = searchView.getInput(); // TODO
+  // const query = "pasta"; // TESTING
 
   if (query) {
     //   2 | New search object and add to state
@@ -32,6 +32,7 @@ export const controlSearch = async () => {
     } catch (err) {
       console.log(err);
       alert("Something went wrong processing results");
+      clearLoader();
     }
   }
 };
