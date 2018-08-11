@@ -155,8 +155,14 @@ elements.shopping.addEventListener("click", e => {
     // Handle the Count update
   } else if (e.target.matches(".shopping__count-value")) {
     // read the value from the UI & update state
-    const val = parseFloat(e.target.value, 10);
-    state.list.updateCount(id, val);
+    let val = parseFloat(e.target.value, 10);
+    if (val >= 0) {
+      state.list.updateCount(id, val);
+      listView.enableList(id);
+    } else {
+      // alert("Negative values are not accepted");
+      listView.disableList(id);
+    }
   }
 });
 

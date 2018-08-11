@@ -553,6 +553,10 @@ body {
   border-bottom: 1px solid #f2efee;
   position: relative;
 }
+.shopping__item.disabled {
+  background-color: #e6e6e6;
+  color: #b1a5a5;
+}
 .shopping__count {
   flex: 0 0 7.5rem;
   padding: 0.4rem 0.5rem;

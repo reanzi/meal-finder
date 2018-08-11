@@ -25,3 +25,12 @@ export const deleteItem = id => {
   const item = document.querySelector(`[data-itemid="${id}"]`);
   if (item) item.parentElement.removeChild(item);
 };
+
+export const disableList = id => {
+  const list = document.querySelector(`[data-itemid="${id}"]`);
+  list.classList.add("disabled");
+};
+export const enableList = id => {
+  const list = document.querySelector(`[data-itemid="${id}"]`);
+  list.classList.remove("disabled");
+};
