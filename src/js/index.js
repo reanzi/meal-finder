@@ -4,6 +4,7 @@ import { elements, renderLoader, clearLoader } from "./views/base";
 import List from "./models/List";
 import * as searchView from "./views/searchView";
 import * as recipeView from "./views/recipeView";
+import * as listView from "./views/listView";
 import Recipe from "./models/Recipe";
 
 /**  Global state of the app */
@@ -15,6 +16,8 @@ import Recipe from "./models/Recipe";
 
 // state
 const state = {};
+
+window.state = state; // For testing
 
 /**
  *   ##SEARCH CONTROLLER
@@ -122,6 +125,41 @@ const controlRecipe = async () => {
   window.addEventListener(event, controlRecipe)
 );
 
+/**
+ * LIST CONTROLLER
+ */
+const controList = () => {
+  // Controll a new List if there is nono yet
+  if (!state.list) state.list = new List();
+
+  // add each ingredients to the List & UI
+
+  state.recipe.ingredients.forEach(el => {
+    const item = state.list.addItem(el.count, el.unit, el.ingredient);
+    listView.renderItem(item);
+  });
+};
+
+// Event Deligation:  Handling delete and update list events
+elements.shopping.addEventListener("click", e => {
+  const id = e.target.closest(".shopping__item").dataset.itemid;
+
+  // Handle Delete btn
+  if (e.target.matches(".shopping__delete, .shopping__delete *")) {
+    // delete from state
+    state.list.deleteItem(id);
+
+    // delete from UI
+    listView.deleteItem(id);
+
+    // Handle the Count update
+  } else if (e.target.matches(".shopping__count-value")) {
+    // read the value from the UI & update state
+    const val = parseFloat(e.target.value, 10);
+    state.list.updateCount(id, val);
+  }
+});
+
 // Event Deligation:  Handling recipe btn clicks
 elements.recipe.addEventListener("click", e => {
   if (e.target.matches(".btn-decrease, .btn-decrease *")) {
@@ -134,6 +172,8 @@ elements.recipe.addEventListener("click", e => {
     //Increase is clicked
     state.recipe.updateServings("inc");
     recipeView.updateServingsIngredients(state.recipe);
+  } else if (e.target.matches(".recipe__btn--add, .recipe__btn--add *")) {
+    controList();
   }
 
   // console.log(state.recipe);
