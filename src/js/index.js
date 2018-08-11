@@ -59,6 +59,7 @@ elements.searchBtn.addEventListener("submit", e => {
 //   fxn.controlSearch();
 // });
 
+// Event Delegation; b'se initially the target element is not in the DOM
 elements.searchResPages.addEventListener("click", e => {
   const btn = e.target.closest(".btn-inline");
   if (btn) {
@@ -119,3 +120,20 @@ const controlRecipe = async () => {
 ["hashchange", "load"].forEach(event =>
   window.addEventListener(event, controlRecipe)
 );
+
+// Event Deligation:  Handling recipe btn clicks
+elements.recipe.addEventListener("click", e => {
+  if (e.target.matches(".btn-decrease, .btn-decrease *")) {
+    //Decrease is clicked if
+    if (state.recipe.servings > 1) {
+      state.recipe.updateServings("dec");
+      recipeView.updateServingsIngredients(state.recipe);
+    }
+  } else if (e.target.matches(".btn-increase, .btn-increase *")) {
+    //Increase is clicked
+    state.recipe.updateServings("inc");
+    recipeView.updateServingsIngredients(state.recipe);
+  }
+
+  // console.log(state.recipe);
+});
