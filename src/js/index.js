@@ -176,6 +176,8 @@ const controlLike = () => {
     likeView.deleteLike(currentID);
   }
   likeView.toggleLikeMenu(state.likes.getNumLikes());
+  // const badge = state.likes.getNumLikes();
+  elements.badge.innerHTML = state.likes.getNumLikes();
 };
 
 //////   **********    Events Delegations    *************   ///////////

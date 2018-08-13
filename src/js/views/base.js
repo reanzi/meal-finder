@@ -8,7 +8,8 @@ export const elements = {
   shopping: document.querySelector(".shopping__list"),
   recipe: document.querySelector(".recipe"),
   likesMenu: document.querySelector(".likes__field"),
-  likesList: document.querySelector(".likes__list")
+  likesList: document.querySelector(".likes__list"),
+  badge: document.querySelector(".badge")
 };
 
 // classes
