@@ -5,6 +5,7 @@ import List from "./models/List";
 import * as searchView from "./views/searchView";
 import * as recipeView from "./views/recipeView";
 import * as listView from "./views/listView";
+import * as likeView from "./views/likeView";
 import Recipe from "./models/Recipe";
 import Likes from "./models/Likes";
 
@@ -17,8 +18,7 @@ import Likes from "./models/Likes";
 
 // state
 const state = {};
-
-//window.state = state; // For testing
+// window.state = state; // For testing
 //////   **********    CONTROLLERS   *************   /////////
 /**
  *   ##SEARCH CONTROLLER
@@ -111,7 +111,7 @@ const controlRecipe = async () => {
       //render recipe
       // console.log(state.recipe);
       clearLoader();
-      recipeView.renderRecipe(state.recipe);
+      recipeView.renderRecipe(state.recipe, state.likes.isLiked(id));
     } catch (error) {
       console.log(error);
       alert("Error Processing the Recipe :) FROM RECIPE CTRL");
@@ -129,6 +129,9 @@ const controlRecipe = async () => {
 /**
  * LIST CONTROLLER
  */
+state.likes = new Likes(); //for testing
+likeView.toggleLikeMenu(state.likes.getNumLikes());
+// const likes = state.likes.getNumLikes().length;
 const controlList = () => {
   // Controll a new List if there is nono yet
   if (!state.list) state.list = new List();
@@ -158,18 +161,21 @@ const controlLike = () => {
       state.recipe.img
     );
     //Toggle the like btn
+    likeView.toggleLikeBtn(true);
 
     //add the like to the UI list
-    console.log(state.likes);
+    likeView.renderLikes(newLike);
 
     // User Liked current recipe
   } else {
     //remove like to from the state
     state.likes.deleteLike(currentID);
     //Toggle the like btn
+    likeView.toggleLikeBtn(false);
     //remove the like to from the UI list
-    console.log(state.likes);
+    likeView.deleteLike(currentID);
   }
+  likeView.toggleLikeMenu(state.likes.getNumLikes());
 };
 
 //////   **********    Events Delegations    *************   ///////////

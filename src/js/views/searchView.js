@@ -20,7 +20,7 @@ export const highlightSelected = id => {
 
   //Add active class to selected item
   document
-    .querySelector(`a[href*="#${id}"]`)
+    .querySelector(`.results__link[href*="#${id}"]`)
     .classList.add("results__link--active");
 };
 // limiting the length of title
@@ -33,7 +33,7 @@ initial = 0;
 
 
 */
-const limitRecipeTitle = (title, limit = 17) => {
+export const limitRecipeTitle = (title, limit = 17) => {
   const newTitle = [];
   if (title.length > limit) {
     title.split(" ").reduce((acc, cur) => {
