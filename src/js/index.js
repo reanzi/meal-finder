@@ -18,7 +18,7 @@ import Likes from "./models/Likes";
 
 // state
 const state = {};
-// window.state = state; // For testing
+window.state = state; // For testing
 //////   **********    CONTROLLERS   *************   /////////
 /**
  *   ##SEARCH CONTROLLER
@@ -129,9 +129,9 @@ const controlRecipe = async () => {
 /**
  * LIST CONTROLLER
  */
-state.likes = new Likes(); //for testing
-likeView.toggleLikeMenu(state.likes.getNumLikes());
-// const likes = state.likes.getNumLikes().length;
+// state.likes = new Likes(); //for testing
+// likeView.toggleLikeMenu(state.likes.getNumLikes());
+// // const likes = state.likes.getNumLikes().length;
 const controlList = () => {
   // Controll a new List if there is nono yet
   if (!state.list) state.list = new List();
@@ -176,7 +176,6 @@ const controlLike = () => {
     likeView.deleteLike(currentID);
   }
   likeView.toggleLikeMenu(state.likes.getNumLikes());
-  // const badge = state.likes.getNumLikes();
   elements.badge.innerHTML = state.likes.getNumLikes();
 };
 
@@ -205,6 +204,23 @@ elements.shopping.addEventListener("click", e => {
       listView.disableList(id);
     }
   }
+});
+
+// Restoring the liked Recipes on page Load
+window.addEventListener("load", () => {
+  state.likes = new Likes();
+
+  // restore from localStorage
+  state.likes.readStorage();
+
+  // Toggle like menu Btn
+  likeView.toggleLikeMenu(state.likes.getNumLikes());
+  // const allLike = state.likes.getNumLikes();
+  // console.log(allLike);
+
+  // Render the existing likes
+  elements.badge.innerHTML = state.likes.getNumLikes();
+  state.likes.likes.forEach(like => likeView.renderLikes(like));
 });
 
 // Event Deligation:  Handling recipe btn clicks
